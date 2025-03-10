@@ -18,6 +18,9 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
+    ssl: {
+      rejectUnauthorized: false,
+    }
   }
 );
 
@@ -30,12 +33,6 @@ app.use(cors({
 
 // Middleware
 app.use(bodyParser.json());
-
-// // PostgreSQL Database Connection
-// const sequelize = new Sequelize('webappdb', 'webapp', 'web#app21', {
-//   host: '18.136.147.42',
-//   dialect: 'postgres',
-// });
 
 // Define Book model
 const Book = sequelize.define('Book', {
