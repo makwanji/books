@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo apt update
-sudo apt install -y node nginx
+sudo apt install -y npm nginx

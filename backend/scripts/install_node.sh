@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo apt update
-sudo apt install -y node
+sudo apt install -y npm
