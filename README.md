@@ -27,3 +27,17 @@ docker run -p 3000:8080 \
   my-react-frontend
 
 docker run -p 3000:80 -e REACT_APP_BACKEND_URL=${API_BASE_URL} my-react-frontend
+
+
+DB_HOST="18.136.147.42"
+DB_PORT=5432
+DB_USER="bookuser"
+DB_PASSWORD="book#app21"
+DB_NAME="booksdb"
+PORT=8000
+
+# start container db
+docker-compose --env-file .env up db --force-recreate --build -d
+
+# start container db
+docker-compose --env-file backend/.env up backend --force-recreate --build -d

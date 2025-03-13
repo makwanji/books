@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Read the backend URL dynamically from `window._env_`
+const backendUrl = window._env_?.BACKEND_URL || "http://localhost:3000";
+
+console.log("Backend URL:", backendUrl); // Debugging purposes
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App backendUrl={backendUrl} />
   </React.StrictMode>
 );
 

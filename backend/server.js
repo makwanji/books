@@ -24,12 +24,17 @@ const sequelize = new Sequelize(
   }
 );
 
+// // Or allow only specific origins
+// const allowedOrigins = process.env.CORS_ORIGIN || "http://localhost:3000"; // Default for local dev
 
-app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from React frontend
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}));
+// app.use(cors({
+//   origin: allowedOrigins.split(","), // Supports multiple origins
+//   methods: "GET,POST,PUT,DELETE",
+//   credentials: true
+// }));
+
+
+app.use(cors()); // Allow all origins (not recommended for production)
 
 // Middleware
 app.use(bodyParser.json());

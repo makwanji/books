@@ -22,8 +22,12 @@ FROM nginx:alpine
 # Copy the build folder from the build stage to the Nginx html directory
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80 to access the frontend
-EXPOSE 8080
+# Copy entry script for dynamic env variables
+COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
+RUN chmod +x /usr/bin/docker-entrypoint.sh
+
+# Set entrypoint
+ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
